@@ -1,0 +1,12 @@
+.hidden {
+    display: none;
+}
+
+img {
+    transition: 0.5s;
+}
+
+.round {
+    border-radius: 50%;
+    transform: rotate(1turn) scale(2);   
+}
