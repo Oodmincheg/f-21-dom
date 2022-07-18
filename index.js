@@ -1,77 +1,31 @@
-const div = document.createElement('div');
+const greeting = document.createElement('p');
+greeting.innerText = 'Hello';
+const name = document.createElement('em');
+name.innerText = ' Vlad';
+const surname = document.createElement('b');
+surname.innerText = ' Vorobyov';
+const dot = document.createTextNode('.');
 
-div.classList.add('new-div');
-div.innerText = 'New div';
+greeting.append(name, surname, dot);
 
-const footer = document.querySelector('footer');
-const img = document.createElement('img');
-img.src = 'https://picsum.photos/200';
-img.alt = 'new image';
-div.appendChild(img);
+document.body.appendChild(greeting);
 
-const img2 = document.createElement('img');
-img2.src = 'https://picsum.photos/200';
-img2.alt = 'new image2';
-footer.insertAdjacentElement('beforebegin', img2);
-console.log('created element ===> ', div);
+console.log('children without text nodes ===> ', greeting.children);
+console.log('children with text nodes ===> ', greeting.childNodes);
 
-const body = document.querySelector('body');
-body.appendChild(div);
+const firstChild = greeting.firstChild;
+const firstElementChild = greeting.firstElementChild;
 
-const TODOS = ['Learn js', 'Learn react', 'Learn angular'];
+console.log('first child including text node ===> ', firstChild);
+console.log('first child only element ===> ', firstElementChild);
+console.log(
+  'next node sibling, next node on the same level ===> ',
+  firstChild.nextSibling,
+);
 
-// const createTodoLI = (todo) => {
-//   const li = document.createElement('li');
-//   li.classList.add = 'todo';
-//   li.innerText = todo;
-//   return li;
-// };
+console.log(
+  'next element sibling, next element on the same level ===> ',
+  firstChild.nextElementSibling,
+);
 
-// function createTodosList(todos) {
-//   const ul = document.createElement('ul');
-//   ul.classList.add = 'todos';
-//   const todosLIs = todos.map(createTodoLI); //[createTodoLI(element1), createTodoLI(element2)]
-//   todosLIs.forEach((li) => ul.insertAdjacentElement('beforeend', li));
-// todosListElement.forEach(function (todo) {});
-//   return ul;
-// }
-
-// const createTodoLiString = (todo) => {
-//   return `<li class="todo">${todo}</li>`;
-// };
-
-function createTodoLiString(todo) {
-  return `<li class="todo">${todo}</li>`;
-}
-function createAlert() {
-  alert('load');
-}
-function createTodosList(todos) {
-  return `<ul class="todos" onload="createAlert('load')">
-  ${todos.map(createTodoLiString).join('')}
-  </ul>  `;
-}
-
-const todosListString = createTodosList(TODOS);
-
-const range = document.createRange();
-const todosListElement = range.createContextualFragment(todosListString);
-console.log('range ===> ', range);
-
-body.appendChild(todosListElement);
-
-const input = document.createElement('input');
-input.placeholder = 'Change your name';
-body.appendChild(input);
-const button = document.createElement('button');
-button.innerText = 'Submit name';
-body.appendChild(button);
-const nickname = document.createElement('h3');
-nickname.innerHTML = 'Your nickname here';
-body.appendChild(nickname);
-button.addEventListener('click', () => {
-  nickname.innerHTML = input.value;
-});
-
-//<img onload="alert('something bad happened')" src="https://picsum.photos/200"></img>
-// you should sanitize you html strings
+console.log('parent element ===> ', firstChild.parentElement);
